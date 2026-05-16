@@ -11,7 +11,7 @@ from app.core.config import get_settings
 from app.core.logging import setup_logging
 from app.middleware.correlation import CorrelationIdMiddleware
 from app.middleware.error_handler import global_exception_handler
-from app.api.routes import health
+from app.api.routes import health,jobs
 
 setup_logging()
 logger = logging.getLogger(__name__)
@@ -72,3 +72,4 @@ async def logging_middleware(request: Request, call_next):
     return response
 
 app.include_router(health.router)
+app.include_router(jobs.router)
